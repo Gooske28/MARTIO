@@ -1,2 +1,2 @@
 # MARTIO
-MARTIO is a simple website with some links and information.
+MARTIO is a simple miniwebsite with some links and information.
