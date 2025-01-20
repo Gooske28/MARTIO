@@ -52,8 +52,51 @@ MARTIO is actually made by Matteo! So if you are reading this, you know who the 
     <h1 style="text-align: center; border:2px solid darkcyan;">Welcome!</h1>
     <h3 style="text-align: center;">MARTIO is a simple miniwebsite with some links to handy websites.</h3>
 
+<!-- Zoekfunctie -->
+<div style="text-align: center; margin: 20px;">
+  <input type="text" id="searchInput" placeholder="Search links..." style="padding: 5px; width: 50%;">
+  <button onclick="searchLinks()" style="padding: 5px;">Search</button>
+  <button onclick="resetSearch()" style="padding: 5px;">Reset</button>
+</div>
 
-    <h4>Search</h4>
+<script>
+  function searchLinks() {
+    // Haal de zoekwaarde op en maak het hoofdletterongevoelig
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const links = document.querySelectorAll("a");
+
+    let found = false;
+
+    // Itereer door de links en verberg niet-overeenkomende
+    links.forEach(link => {
+      if (link.textContent.toLowerCase().includes(query)) {
+        link.style.display = ""; // Toon de overeenkomende link
+        found = true;
+      } else {
+        link.style.display = "none"; // Verberg de niet-overeenkomende link
+      }
+    });
+
+    if (found) {
+      alert("Search completed! Matching results are shown.");
+    } else {
+      alert("No matching results found.");
+    }
+  }
+
+  function resetSearch() {
+    // Herstel alle links en maak het zoekveld leeg
+    const links = document.querySelectorAll("a");
+    links.forEach(link => {
+      link.style.display = ""; // Toon alle links
+    });
+    document.getElementById("searchInput").value = ""; // Maak het zoekveld leeg
+  }
+</script>
+
+
+
+    <h4>Web</h4>
      <ul>
       <li><a href="https://google.com" target="_blank">Google</a></li><br>
       <li><a href="https://ecosia.org" target="_blank">Ecosia</a></li><br>
