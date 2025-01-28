@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARTIO Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-form {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #222;
+            color: white;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <form class="login-form" onsubmit="return handleLogin(event)">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Gebruikersnaam" required>
+        <input type="password" id="password" placeholder="Wachtwoord" required>
+        <button type="submit">Inloggen</button>
+        <p class="error" id="error"></p>
+    </form>
+
+    <script>
+        // Simpele inloggegevens
+        const users = {
+            "Gooske": "#Calink2012",
+            "Guest": "guest123"
+        };
+
+        function handleLogin(event) {
+            event.preventDefault(); // Voorkom formulierverzending
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+
+            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+                alert("Welkom, " + username + "! Je bent ingelogd.");
+                // Hier kun je doorverwijzen naar een andere pagina
+                window.location.href = "dashboard.html";
+            } else {
+                error.textContent = "Ongeldige gebruikersnaam of wachtwoord.";
+            }
+        }
+    </script>
+</body>
+</html>
