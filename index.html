@@ -79,9 +79,10 @@
             const password = document.getElementById('password').value;
             const error = document.getElementById('error');
 
-            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+            // Controleer of de gebruikersnaam en het wachtwoord kloppen
+            if (users[username] && users[username] === password) {
                 alert("Welkom, " + username + "! Je bent ingelogd.");
-                // Hier kun je doorverwijzen naar een andere pagina
+                // Doorverwijzen naar een andere pagina
                 window.location.href = "dashboard.html";
             } else {
                 error.textContent = "Ongeldige gebruikersnaam of wachtwoord.";
@@ -90,3 +91,4 @@
     </script>
 </body>
 </html>
+
