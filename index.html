@@ -59,6 +59,8 @@
 <body>
     <form class="login-form" onsubmit="return handleLogin(event)">
         <h2>Login</h2>
+        <h1>Username: "Guest"</h1>
+        <h1>Password: "guest123"</h1>
         <input type="text" id="username" placeholder="Gebruikersnaam" required>
         <input type="password" id="password" placeholder="Wachtwoord" required>
         <button type="submit">Inloggen</button>
@@ -81,7 +83,7 @@
 
             // Controleer of de gebruikersnaam en het wachtwoord kloppen
             if (users[username] && users[username] === password) {
-                alert("Welkom, " + username + "! Je bent ingelogd.");
+                alert("Welcome, " + username + "! You are logged in.");
 
                 // Stel een sessie in en start de timer van 30 minuten
                 sessionStorage.setItem("loggedIn", "true");
