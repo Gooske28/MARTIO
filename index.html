@@ -82,13 +82,29 @@
             // Controleer of de gebruikersnaam en het wachtwoord kloppen
             if (users[username] && users[username] === password) {
                 alert("Welkom, " + username + "! Je bent ingelogd.");
+
+                // Stel een sessie in en start de timer van 30 minuten
+                sessionStorage.setItem("loggedIn", "true");
+                sessionStorage.setItem("username", username);
+                startLogoutTimer();
+
                 // Doorverwijzen naar een andere pagina
                 window.location.href = "dashboard.html";
             } else {
                 error.textContent = "Ongeldige gebruikersnaam of wachtwoord.";
             }
         }
+
+        function startLogoutTimer() {
+            // Stel de timer in op 30 minuten (1800000 ms)
+            setTimeout(() => {
+                alert("Je sessie is verlopen. Je wordt uitgelogd.");
+                sessionStorage.clear(); // Verwijder sessiegegevens
+                window.location.href = "index.html"; // Terug naar de loginpagina
+            }, 1800000); // 30 minuten in milliseconden
+        }
     </script>
 </body>
 </html>
+
 
