@@ -1,205 +1,163 @@
 <!DOCTYPE html>
-<!--
- __  __    _    ____ _____ ___ ___  
-|  \/  |  / \  |  _ \_   _|_ _/ _ \ 
-| |\/| | / _ \ | |_) || |  | | | | |
-| |  | |/ /_\ \|  _ < | |  | | |_| |
-|_|  |_/_/   \_\_| \_\|_| |___\___/ 
-
-MARTIO is actually made by Matteo! So if you are reading this, you know who the real maker is and who to look for if you want to find me.-->
-
 <html lang="en">
 <head>
-
-  
-  <!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-55FN6X2CQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-55FN6X2CQ6');
-</script>
-
-
-<link rel="icon" href="LogoM.png" type="image/png">
-
     <meta charset="UTF-8">
-    <meta name="author" content="Heleli Maes">
-    <meta name="description" content="Free links to handy websites">
-    <meta name="keywords" content="Link, MARTIO">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARTIO</title>
-
-
-  <!--Kleur en stijl van de links-->  
-  <style>
-    a:link {
-      color: aquamarine;
-      background-color: transparent;
-      text-decoration: none;
-    }
-    a:visited {
-      color: cyan;
-      background-color: transparent;
-      text-decoration: underline;
-    }
-    a:active {
-      color: gold;
-      background-color: transparent;
-      text-decoration: underline;
-    }
-  </style>  
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .links-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .links-container a {
+            color: aquamarine;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+        .links-container a:hover {
+            color: gold;
+        }
+        .search-bar {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 5px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
+<body onload="checkAuthentication()">
+    <h1>Welkom op je Dashboard!</h1>
+    <p>Je bent ingelogd als <span id="username"></span>.</p>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Zoek links...">
+        <button onclick="searchLinks()">Zoeken</button>
+        <button onclick="resetSearch()">Reset</button>
+    </div>
+    <div class="links-container" id="linksContainer">
+        <h4>Web</h4>
+        <a href="https://google.com" target="_blank">Google</a>
+        <a href="https://ecosia.org" target="_blank">Ecosia</a>
+        <a href="https://yahoo.com" target="_blank">Yahoo</a>
+        <a href="https://bing.com" target="_blank">Bing</a>
+        <a href="https://vandale.nl" target="_blank">VanDale</a>
 
+        <h4>Communication</h4>
+        <a href="https://web.whatsapp.com/" target="_blank">WhatsApp</a>
+        <a href="https://discord.com" target="_blank">Discord</a>
+        <a href="https://wetransfer.com" target="_blank">WeTransfer</a>
+        <a href="https://gmail.com" target="_blank">GMail</a>
+        <a href="https://proton.me" target="_blank">ProtonMail</a>
+        <a href="https://mailfence.com" target="_blank">Mailfence</a>
+        <a href="https://tuta.com" target="_blank">Tutamail</a>
 
-<!--Kleur en stijl van de pagina + titel en inleiding-->
-<body style="background-color: black; color: azure;">
-    <h1 style="text-align: center; border:2px solid darkcyan;">Welcome!</h1>
-    <h3 style="text-align: center;">MARTIO is a simple miniwebsite with some links to handy websites.</h3>
+        <h4>Social</h4>
+        <a href="https://reddit.com" target="_blank">Reddit</a>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://x.com" target="_blank">X</a>
 
+        <h4>Media</h4>
+        <a href="https://spotify.com" target="_blank">Spotify</a>
+        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://netflix.com" target="_blank">Netflix</a>
+        <a href="https://streamz.be" target="_blank">Streamz</a>
+        <a href="https://disneyplus.com" target="_blank">Disney+</a>
+        <a href="https://hbo.max.com" target="_blank">HBOMax</a>
+        <a href="https://primevideo.com" target="_blank">AmazonPrimeVideo</a>
 
-<!-- Zoekfunctie -->
-<div style="text-align: center; margin: 20px;">
-  <input type="text" id="searchInput" placeholder="Search links..." style="padding: 5px; width: 50%;">
-  <button onclick="searchLinks()" style="padding: 5px;">Search</button>
-  <button onclick="resetSearch()" style="padding: 5px;">Reset</button>
-</div>
+        <h4>Software</h4>
+        <a href="https://github.com" target="_blank">Github</a>
+        <a href="https://nirsoft.net" target="_blank">Nirsoft</a>
+        <a href="https://softonic.nl" target="_blank">SoftonicApps</a>
+        <a href="https://portableapps.com" target="_blank">PortableApps</a>
 
-<script>
-  function searchLinks() {
-    // Haal de zoekwaarde op en maak het hoofdletterongevoelig
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    const links = document.querySelectorAll("a");
+        <h4>A.I.</h4>
+        <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
+        <a href="https://perplexity.ai" target="_blank">PerplexityAI</a>
+    </div>
+    <button onclick="logout()">Uitloggen</button>
 
-    let found = false;
+    <script>
+        function checkAuthentication() {
+            const username = sessionStorage.getItem("username");
+            const token = sessionStorage.getItem("authToken");
 
-    // Itereer door de links en verberg niet-overeenkomende
-    links.forEach(link => {
-      if (link.textContent.toLowerCase().includes(query)) {
-        link.style.display = ""; // Toon de overeenkomende link
-        found = true;
-      } else {
-        link.style.display = "none"; // Verberg de niet-overeenkomende link
-      }
-    });
+            if (!token || !username) {
+                alert("Je bent niet ingelogd. Terug naar de loginpagina.");
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("username").textContent = username;
+            }
+        }
 
-    if (found) {
-      alert("Search completed! Matching results are shown.");
-    } else {
-      alert("No matching results found.");
-    }
-  }
+        function logout() {
+            sessionStorage.clear();
+            alert("Je bent uitgelogd.");
+            window.location.href = "index.html";
+        }
 
-  function resetSearch() {
-    // Herstel alle links en maak het zoekveld leeg
-    const links = document.querySelectorAll("a");
-    links.forEach(link => {
-      link.style.display = ""; // Toon alle links
-    });
-    document.getElementById("searchInput").value = ""; // Maak het zoekveld leeg
-  }
-</script>
+        function searchLinks() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const links = document.querySelectorAll(".links-container a");
 
+            links.forEach(link => {
+                if (link.textContent.toLowerCase().includes(query)) {
+                    link.style.display = "block";
+                } else {
+                    link.style.display = "none";
+                }
+            });
+        }
 
-    <!--Links-->
-    <h4>Web</h4>
-     <ul>
-      <li><a href="https://google.com" target="_blank">Google</a></li><br>
-      <li><a href="https://ecosia.org" target="_blank">Ecosia</a></li><br>
-      <li><a href="https://yahoo.com" target="_blank">Yahoo</a></li><br>
-      <li><a href="https://bing.com" target="_blank">Bing</a></li><br>
-      <li><a href="https://vandale.nl" target="_blank">VanDale</a></li>
-     </ul>
-
-    <h4>Communication</h4>
-    <ul>  
-      <li><a href="https://web.whatsapp.com/" target="_blank">WhatsApp</a></li><br>
-      <li><a href="https://discord.com" target="_blank">Discord</a></li><br>
-      <li><a href="https://wetransfer.com" target="_blank">WeTransfer</a></li><br>
-      <li><a href="https://gmail.com" target="_blank">GMail</a></li><br>
-      <li><a href="https://proton.me" target="_blank">ProtonMail</a></li><br>
-      <li><a href="https://mailfence.com" target="_blank">Mailfence</a></li><br>
-      <li><a href="https://tuta.com" target="_blank">Tutamail</a></li>
-    </ul>
-
-    <h4>Social</h4>
-    <ul>
-      <li><a href="https://reddit.com" target="_blank">Reddit</a></li><br>
-      <li><a href="https://facebook.com" target="_blank">Facebook</a></li><br>
-      <li><a href="https://instagram.com" target="_blank">Instagram</a></li><br>
-      <li><a href="https://x.com" target="_blank">X</a></li>
-    </ul>
-
-    <h4>Media</h4>
-    <ul>
-      <li><a href="https://spotify.com" target="_blank">Spotify</a></li><br>
-      <li><a href="https://youtube.com" target="_blank">YouTube</a></li><br>
-      <li><a href="https://netflix.com" target="_blank">Netflix</a></li><br>
-      <li><a href="https://streamz.be" target="_blank">Streamz</a></li><br>
-      <li><a href="https://disneyplus.com" target="_blank">Disney+</a></li><br>
-      <li><a href="https://hbo.max.com" target="_blank">HBOMax</a></li><br>
-      <li><a href="https://primevideo.com" target="_blank">AmazonPrimeVideo</a></li>
-    </ul>
-
-    <h4>Software</h4>
-    <ul>
-      <li><a href="https://github.com" target="_blank">Github</a></li><br>
-      <li><a href="https://nirsoft.net" target="_blank">Nirsoft</a></li><br>
-      <li><a href="https://softonic.nl" target="_blank">SoftonicApps</a></li><br>
-      <li><a href="https://portableapps.com" target="_blank">PortableApps</a></li>
-    </ul>
-
-    <h4>A.I.</h4>
-    <ul>  
-      <li><a href="https://chatgpt.com" target="_blank">ChatGPT</a></li><br>
-      <li><a href="https://perplexity.ai" target="_blank">PerplexityAI</a></li>
-    </ul>    
-    
-    
-    <!--Onderkant van de pagina-->
-    <footer>
-      <hr>
-
-      
-      <!--Mailchimp Formulier-->
-      <div id="mc_embed_shell">
-        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-  </style>
-  <div id="mc_embed_signup">
-      <form action="https://webnode.us8.list-manage.com/subscribe/post?u=81eef2b8210695bfabfe6075a&amp;id=0b6824552a&amp;f_id=00eb28e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-          <div id="mc_embed_signup_scroll"><h2>Subscribe for monthly updates about new links!</h2>
-              <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-              <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name <span class="asterisk">*</span></label><input type="text" name="FNAME" class="required text" id="mce-FNAME" required="" value=""></div>
-          <div id="mce-responses" class="clear foot">
-              <div class="response" id="mce-error-response" style="display: none;"></div>
-              <div class="response" id="mce-success-response" style="display: none;"></div>
-          </div>
-      <div aria-hidden="true" style="position: absolute; left: -5000px;">
-          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-          <input type="text" name="b_81eef2b8210695bfabfe6075a_0b6824552a" tabindex="-1" value="">
-      </div>
-          <div class="optionalParent">
-              <div class="clear foot">
-                  <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                  <p style="margin: 0px auto;"><a href="http://eepurl.com/i7M_us" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: black; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-              </div>
-          </div>
-      </div>
-  </form>
-  </div>
-  <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
-  
-  <!--Info-->
-  <p>New ideas or questions? <a href="mailto:info.heleli@yahoo.com">info.heleli@yahoo.com</a></p>
-  <p><a href="https://github.com/Gooske28/MARTIO/commits/MARTIO" target="_blank">Full Changelog</a></p>
-  <p>&copy; 2025 MARTIO made by Heleli</p>
-  <p><a href="https://github.com/Gooske28/MARTIO/raw/main/Disclaimer%20MARTIO.docx" target="_blank">Full Disclaimer</a></p> 
-
-
-    </footer>
-
-
+        function resetSearch() {
+            const links = document.querySelectorAll(".links-container a");
+            links.forEach(link => {
+                link.style.display = "block";
+            });
+            document.getElementById("searchInput").value = "";
+        }
+    </script>
 </body>
 </html>
