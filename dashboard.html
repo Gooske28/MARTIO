@@ -70,12 +70,8 @@
 <body onload="checkAuthentication()">
     <h1>Welkom op je Dashboard!</h1>
     <p>Je bent ingelogd als <span id="username"></span>.</p>
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Zoek links...">
-        <button onclick="searchLinks()">Zoeken</button>
-        <button onclick="resetSearch()">Reset</button>
-    </div>
-    <div class="links-container" id="linksContainer">
+    <div class="links-container" id="linksContainer" style="text-align: left;">
+
         <h4>Web</h4>
         <a href="https://google.com" target="_blank">Google</a>
         <a href="https://ecosia.org" target="_blank">Ecosia</a>
@@ -136,27 +132,6 @@
             sessionStorage.clear();
             alert("Je bent uitgelogd.");
             window.location.href = "index.html";
-        }
-
-        function searchLinks() {
-            const query = document.getElementById("searchInput").value.toLowerCase();
-            const links = document.querySelectorAll(".links-container a");
-
-            links.forEach(link => {
-                if (link.textContent.toLowerCase().includes(query)) {
-                    link.style.display = "block";
-                } else {
-                    link.style.display = "none";
-                }
-            });
-        }
-
-        function resetSearch() {
-            const links = document.querySelectorAll(".links-container a");
-            links.forEach(link => {
-                link.style.display = "block";
-            });
-            document.getElementById("searchInput").value = "";
         }
     </script>
 </body>
