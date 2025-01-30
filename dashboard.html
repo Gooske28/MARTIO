@@ -49,8 +49,8 @@
     <link rel="icon" href="LogoM.png" type="image/png">
 </head>
 <body onload="checkAuthentication()">
-    <h1>Welkom op je Dashboard!</h1>
-    <p>Je bent ingelogd als <span id="username"></span>.</p>
+    <h1 style="text-align: center;">Welkom op je Dashboard!</h1>
+    <h2 style="text-align: center;">Je bent ingelogd als <span id="username"></span>.</h2>
     <div class="links-container" id="linksContainer" style="text-align: left;">
 
         <h4>Web</h4>
@@ -94,7 +94,11 @@
         <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
         <a href="https://perplexity.ai" target="_blank">PerplexityAI</a>
     </div>
-    <button onclick="logout()">Uitloggen</button>
+    <footer>
+      <hr>
+      <
+      <button onclick="logout()">Uitloggen</button>
+    </footer>
 
     <script>
         function checkAuthentication() {
