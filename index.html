@@ -62,13 +62,19 @@
             const password = document.getElementById("password").value;
 
             // Mock authentication check
-            if (username === "admin" && password === "admin123") {
+            if (username === "Gooske" && password === "#Calinka2012") {
                 sessionStorage.setItem("username", username);
                 sessionStorage.setItem("authToken", "exampleToken");
                 alert("Inloggen succesvol!");
                 window.location.href = "dashboard.html";
             } else {
                 alert("Ongeldige gebruikersnaam of wachtwoord.");
+            }
+            if (username === "Guest" && password === "guest123") {
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("authToken", "exampleToken");
+                alert("Inloggen succesvol!");
+                window.location.href = "dashboard.html";
             }
         }
     </script>
