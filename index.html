@@ -3,111 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARTIO Login</title>
-    <link rel="icon" href="LogoM.png" type="image/png">
+    <title>Inloggen</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
-        .login-form {
-            background: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            width: 300px;
-        }
-        .login-form h2 {
+        h1 {
+            font-size: 36px;
             margin-bottom: 20px;
-            font-size: 24px;
-            color: white;
         }
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #555;
-            border-radius: 5px;
-            background-color: #222;
-            color: white;
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .login-form button {
-            width: 100%;
+        input {
             padding: 10px;
-            background: #007bff;
+            margin: 10px 0;
             border: none;
-            color: white;
             border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
             font-size: 16px;
             cursor: pointer;
         }
-        .login-form button:hover {
-            background: #0056b3;
-        }
-        .error {
-            color: red;
-            margin-top: 10px;
-            font-size: 14px;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <form class="login-form" onsubmit="return handleLogin(event)">
-        <h2>Login</h2>
-        <h3>Username: "Guest"</h3>
-        <h3>Password: "guest123"</h3>
-        <input type="text" id="username" placeholder="Gebruikersnaam" required>
-        <input type="password" id="password" placeholder="Wachtwoord" required>
+    <h1>Welcome! Log in</h1>
+    <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
         <button type="submit">Inloggen</button>
-        <p class="error" id="error"></p>
     </form>
 
     <script>
-        // Simpele inloggegevens
-        const users = {
-            "Gooske": "#Calinka2012",
-            "Guest": "guest123"
-        };
+        function login(event) {
+            event.preventDefault();
 
-        function handleLogin(event) {
-            event.preventDefault(); // Voorkom formulierverzending
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const error = document.getElementById('error');
-
-            // Controleer of de gebruikersnaam en het wachtwoord kloppen
-            if (users[username] && users[username] === password) {
-                alert("Welcome, " + username + "! You are logged in.");
-
-                // Stel een sessie in en start de timer van 30 minuten
-                sessionStorage.setItem("loggedIn", "true");
+            // Mock authentication check
+            if (username === "admin" && password === "admin123") {
                 sessionStorage.setItem("username", username);
-                startLogoutTimer();
-
-                // Doorverwijzen naar een andere pagina
+                sessionStorage.setItem("authToken", "exampleToken");
+                alert("Inloggen succesvol!");
                 window.location.href = "dashboard.html";
             } else {
-                error.textContent = "Ongeldige gebruikersnaam of wachtwoord.";
+                alert("Ongeldige gebruikersnaam of wachtwoord.");
             }
-        }
-
-        function startLogoutTimer() {
-            // Stel de timer in op 30 minuten (1800000 ms)
-            setTimeout(() => {
-                alert("Je sessie is verlopen. Je wordt uitgelogd.");
-                sessionStorage.clear(); // Verwijder sessiegegevens
-                window.location.href = "index.html"; // Terug naar de loginpagina
-            }, 1800000); // 30 minuten in milliseconden
         }
     </script>
 </body>
 </html>
-
-
