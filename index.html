@@ -54,11 +54,7 @@
     </style>
     <link rel="icon" href="LogoM.png" type="image/png">
 </head>
-<body onload="checkAuthentication()">
-    <h1 style="text-align: center;">Welkom op je Dashboard!</h1>
-    <h2 style="text-align: center;">Je bent ingelogd als <span id="username"></span>.</h2>
-    <div class="links-container" id="linksContainer" style="text-align:center;">
-
+<body>
         <h4>Web</h4>
         <a href="https://google.com" target="_blank">Google</a>
         <a href="https://ecosia.org" target="_blank">Ecosia</a>
@@ -99,7 +95,6 @@
         <h4>A.I.</h4>
         <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
         <a href="https://perplexity.ai" target="_blank">PerplexityAI</a>
-    </div>
 
     <div class="footer" id="footer" style="text-align: center;">
     <footer>
@@ -111,24 +106,5 @@
     </footer>
     </div>
 
-    <script>
-        function checkAuthentication() {
-            const username = sessionStorage.getItem("username");
-            const token = sessionStorage.getItem("authToken");
-
-            if (!token || !username) {
-                alert("Je bent niet ingelogd. Terug naar de loginpagina.");
-                window.location.href = "index.html";
-            } else {
-                document.getElementById("username").textContent = username;
-            }
-        }
-
-        function logout() {
-            sessionStorage.clear();
-            alert("Je bent uitgelogd.");
-            window.location.href = "index.html";
-        }
-    </script>
 </body>
 </html>
